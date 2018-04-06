@@ -1,5 +1,6 @@
 package ru.stqa.auto.addressbook;
 
+<<<<<<< HEAD
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.AfterMethod;
@@ -40,6 +41,11 @@ public class GroupCreationTests {
     wd.findElement(By.name("pass")).sendKeys(password);
     wd.findElement(By.xpath("//form[@id='LoginForm']/input[3]")).click();
   }
+=======
+import org.testng.annotations.Test;
+
+public class GroupCreationTests extends TestBase {
+>>>>>>> parent of fea442e... Заменили наследование на делегирование
 
   @Test
   public void testGroupCreation() {
@@ -51,6 +57,7 @@ public class GroupCreationTests {
     returnToGroupPage();
   }
 
+<<<<<<< HEAD
   private void gotoGroupPage() {
     wd.findElement(By.linkText("groups")).click();
   }
@@ -92,4 +99,6 @@ public class GroupCreationTests {
       return false;
     }
   }
+=======
+>>>>>>> parent of fea442e... Заменили наследование на делегирование
 }

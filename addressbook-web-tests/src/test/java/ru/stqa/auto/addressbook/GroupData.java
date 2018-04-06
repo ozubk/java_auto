@@ -1,4 +1,4 @@
-package ru.stqa.auto.addressbook.model;
+package ru.stqa.auto.addressbook;
 
 public class GroupData {
 

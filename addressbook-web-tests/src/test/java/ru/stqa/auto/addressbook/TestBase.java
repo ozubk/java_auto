@@ -1,14 +1,15 @@
-package ru.stqa.auto.addressbook.appmanager;
+package ru.stqa.auto.addressbook;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
-import ru.stqa.auto.addressbook.model.GroupData;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 
 import java.util.concurrent.TimeUnit;
 
-public class ApplicationManager {
+public class TestBase {
   FirefoxDriver wd;
 
   public static boolean isAlertPresent(FirefoxDriver wd) {
@@ -20,7 +21,8 @@ public class ApplicationManager {
     }
   }
 
-  public void init() {
+  @BeforeMethod
+  public void setUp() throws Exception {
     wd = new FirefoxDriver(new FirefoxOptions().setLegacy(true));
     wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
     wd.get("http://localhost/addressbook/group.php");
@@ -39,15 +41,15 @@ public class ApplicationManager {
     wd.findElement(By.xpath("//form[@id='LoginForm']/input[3]")).click();
   }
 
-  public void gotoGroupPage() {
+  protected void gotoGroupPage() {
     wd.findElement(By.linkText("groups")).click();
   }
 
-  public void initGroupCreation() {
+  protected void initGroupCreation() {
     wd.findElement(By.name("new")).click();
   }
 
-  public void fillGroupForm(GroupData groupData) {
+  protected void fillGroupForm(GroupData groupData) {
     wd.findElement(By.name("group_name")).click();
     wd.findElement(By.name("group_name")).clear();
     wd.findElement(By.name("group_name")).sendKeys(groupData.getName());
@@ -59,23 +61,24 @@ public class ApplicationManager {
     wd.findElement(By.name("group_footer")).sendKeys(groupData.getFooter());
   }
 
-  public void submitGroupCreation() {
+  protected void submitGroupCreation() {
     wd.findElement(By.name("submit")).click();
   }
 
-  public void returnToGroupPage() {
+  protected void returnToGroupPage() {
     wd.findElement(By.linkText("group page")).click();
   }
 
-  public void stop() {
+  @AfterMethod
+  public void tearDown() {
     wd.quit();
   }
 
-  public void deleteSelectedGroups() {
+  protected void deleteSelectedGroups() {
     wd.findElement(By.name("delete")).click();
   }
 
-  public void selectGroup() {
+  protected void selectGroup() {
     wd.findElement(By.name("selected[]")).click();
   }
 }
