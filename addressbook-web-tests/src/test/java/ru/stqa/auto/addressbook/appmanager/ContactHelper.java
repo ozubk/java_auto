@@ -25,4 +25,13 @@ public class ContactHelper extends HelperBase {
   public void submitContactCreation() {
     click(By.name("submit"));
   }
+
+  public void deleteSelectedContacts() {
+    click(By.xpath("//div[@id='content']/form[2]/div[2]/input"));
+    alertOK();
+  }
+
+  public void selectContact() {
+    click(By.name("selected[]"));
+  }
 }
