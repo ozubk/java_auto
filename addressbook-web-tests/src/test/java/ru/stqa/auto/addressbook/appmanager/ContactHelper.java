@@ -11,7 +11,7 @@ public class ContactHelper extends HelperBase {
   }
 
   public void initContactCreation() {
-    wd.findElement(By.linkText("add new")).click();
+    click(By.linkText("add new"));
   }
 
   public void fillContactCreation(ContactData contactData) {
