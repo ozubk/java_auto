@@ -2,18 +2,20 @@ package ru.stqa.auto.addressbook.model;
 
 public class ContactData {
 
-  private String firstname;
-  private String lastname;
-  private String phoneHome;
-  private String phoneMobile;
-  private String email;
+  private final String firstname;
+  private final String lastname;
+  private final String phoneHome;
+  private final String phoneMobile;
+  private final String email;
+  private  String group;
 
-  public ContactData (String firstname, String lastname, String phoneHome, String phoneMobile, String email) {
+  public ContactData (String firstname, String lastname, String phoneHome, String phoneMobile, String email, String group) {
     this.firstname = firstname;
     this.lastname = lastname;
     this.phoneHome = phoneHome;
     this.phoneMobile = phoneMobile;
     this.email = email;
+    this.group = group;
   }
 
   public String getFirstname() {
@@ -36,4 +38,7 @@ public class ContactData {
     return this.email;
   }
 
+  public String getGroup() {
+    return group;
+  }
 }
